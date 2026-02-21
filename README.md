@@ -1,3 +1,52 @@
+ to the very top of your README.md.
+🛡️ GitDigital System Status & Standards
+<p align="left">
+<img src="https://img.shields.io/github/actions/workflow/status/Gitdigital-products/subscription-service/mirror.yml?branch=main&style=for-the-badge&logo=githubactions&logoColor=white&label=MIRROR%20SYNC" />
+<img src="https://img.shields.io/badge/SOLANA-2026_COMPLIANT-9945FF?style=for-the-badge&logo=solana&logoColor=white" />
+<img src="https://img.shields.io/badge/SECURITY-CLAWBACK_ACTIVE-red?style=for-the-badge&logo=guardsman&logoColor=white" />
+</p>
+<p align="left">
+<img src="https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white" />
+<img src="https://img.shields.io/badge/NestJS-E0234E?style=flat-square&logo=nestjs&logoColor=white" />
+<img src="https://img.shields.io/badge/Prisma-2D3748?style=flat-square&logo=prisma&logoColor=white" />
+<img src="https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white" />
+<img src="https://img.shields.io/badge/Stripe-008CDD?style=flat-square&logo=stripe&logoColor=white" />
+<img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" />
+</p>
+<p align="left">
+<img src="https://img.shields.io/github/v/release/Gitdigital-products/subscription-service?style=flat-square&color=orange&label=STABLE" />
+<img src="https://img.shields.io/github/repo-size/Gitdigital-products/subscription-service?style=flat-square&color=blueviolet" />
+<img src="https://img.shields.io/github/last-commit/Gitdigital-products/subscription-service?style=flat-square&color=success" />
+</p>
+Why this setup?
+ * The Top Row: Focuses on "The Mission"—Mirroring, Solana compliance, and the Enterprise Safety Net (Clawback).
+ * The Tech Row: Shows users and contributors exactly what tools they need to know.
+ * The Metrics Row: Provides real-time proof that the repo is active and maintained.
+The .env.example for GitDigital
+You'll need these variables to power the Gas Oracle and Stripe-Solana Hybrid Billing:
+# GITDIGITAL CORE CONFIG
+PORT=3000
+NODE_ENV=development
+CATALOG_PATH=./catalog.json
+
+# SOLANA INFRASTRUCTURE
+# Use Helius or QuickNode for high-throughput Priority Fee data
+SOLANA_RPC_URL=https://mainnet.helius-rpc.com/?api-key=YOUR_KEY
+RECOVERY_AUTHORITY_SECRET=YOUR_MULTISIG_PRIVATE_KEY
+GAS_ORACLE_REFRESH_MS=5000
+
+# TRADITIONAL BILLING (STRIPE)
+STRIPE_SECRET_KEY=sk_test_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+
+# DATABASE & CACHE
+DATABASE_URL="postgresql://user:pass@localhost:5432/gitdigital"
+REDIS_URL="redis://localhost:6379"
+
+# COMPLIANCE (KYC)
+KYC_PROVIDER_API_KEY=YOUR_KEY
+AML_THRESHOLD_SOL=50
+
 
 🛰️ GitDigital Subscription Service
 Solana-Native Federated Entitlements & Safety Hub
