@@ -1,0 +1,58 @@
+{
+  "metadata": {
+    "org": "GitDigital Products",
+    "version": "2.1.0",
+    "last_updated": "2026-02-21"
+  },
+  "global_defaults": {
+    "currency": "SOL",
+    "gas_adjustment_strategy": "dynamic_priority",
+    "compliance_level": "standard_aml"
+  },
+  "sections": {
+    "reposync-ai": {
+      "display_name": "RepoSync AI",
+      "free_core": ["public_repo_sync", "structure_linting"],
+      "tiers": {
+        "free": { "quota": 1, "priority": "low", "kyc": "none" },
+        "basic": { "quota": 10, "priority": "medium", "kyc": "lite", "price": 0.5 },
+        "pro": { "quota": 50, "priority": "high", "kyc": "full", "price": 1.5 },
+        "enterprise": { "quota": -1, "priority": "ultra", "kyc": "full", "price": "custom" }
+      },
+      "abuse_thresholds": {
+        "max_sync_per_min": 5,
+        "congestion_tax": 0.005
+      }
+    },
+    "growthflow": {
+      "display_name": "GrowthFlow",
+      "free_core": ["leaderboard_view", "weekly_stats"],
+      "tiers": {
+        "free": { "automations": 2, "tips_allowed": false },
+        "basic": { "automations": 20, "tips_allowed": true, "price": 0.25 },
+        "pro": { "automations": "unlimited", "tips_allowed": true, "price": 0.8 }
+      },
+      "solana_features": {
+        "reward_distribution": "pro_only",
+        "asset_recovery_window": "24h"
+      }
+    },
+    "hustlegpt": {
+      "display_name": "HustleGPT",
+      "free_core": ["cli_access", "basic_templates"],
+      "tiers": {
+        "free": { "ai_credits": 50, "burst_limit": 5 },
+        "basic": { "ai_credits": 2000, "burst_limit": 50, "price": 0.15 },
+        "pro": { "ai_credits": 10000, "burst_limit": "unlimited", "price": 0.5 }
+      }
+    },
+    "compliance-sdk": {
+      "display_name": "Solana KYC & Recovery",
+      "features": {
+        "blacklist_screening": "free",
+        "identity_verification": "basic",
+        "asset_clawback": "enterprise_only"
+      }
+    }
+  }
+}
