@@ -1,0 +1,20 @@
+model CatalogItem {
+  id          String   @id // e.g., "reposync-ai", "growthflow"
+  name        String
+  baseFeatures Json     // Features everyone gets (Free Core)
+}
+
+model Plan {
+  id          String   @id
+  catalogId   String   // Foreign key to CatalogItem
+  tier        Tier     // BASIC, PRO, ENTERPRISE
+  limits      Json     // { "tokens": 5000, "repos": 10 }
+  price       Float
+}
+
+enum Tier {
+  FREE
+  BASIC
+  PRO
+  ENTERPRISE
+}
