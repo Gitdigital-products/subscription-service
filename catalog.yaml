@@ -1,0 +1,11 @@
+# catalog.yaml - The Master Map
+products:
+  - id: reposync-ai
+    external_repo: "GitDigital-Products/reposync"
+    features_mirror: "/src/logic/sync-engine" # Mirrored from here to there
+    tier_config: "standard_billing"
+  
+  - id: asset-recovery-tool
+    external_repo: "GitDigital-Products/recovery-sdk"
+    features_mirror: "/src/recovery/core"
+    tier_config: "enterprise_only"
