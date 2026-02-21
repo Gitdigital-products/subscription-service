@@ -1,0 +1,3 @@
+Non-Custodial Recovery: You don't hold user keys. You hold the Authority to manage the token movement on their behalf in emergencies.
+Abuse-Proof: Because the authority is a multisig, no single GitDigital employee can "rug" a user.
+Token-2022 Native: This doesn't require a custom Rust smart contract (saving you audit costs); it uses Solana's native institutional-grade extensions.
