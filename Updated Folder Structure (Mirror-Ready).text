@@ -1,0 +1,9 @@
+/subscription-service
+  /packages
+    /compliance-sdk    --> Mirrors to all repos (KYC/AML)
+    /gas-oracle        --> Mirrors to all repos (Priority/Tax logic)
+    /recovery-tools    --> Mirrors to Enterprise-facing repos
+  /src
+    /billing           # Subscription state (Stripe/On-chain)
+    /abuse-monitor     # The "Brain" that decides when to charge extra
+    /webhooks          # Listens to Solana & GitHub events
