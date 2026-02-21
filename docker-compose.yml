@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  # The Main Subscription Service
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gitdigital_sub_service
+    restart: always
+    ports:
+      - "${PORT:-3000}:3000"
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+
+  # PostgreSQL for Relational Data (Users, Tiers, KYC Status)
+  db:
+    image: postgres:15-alpine
+    container_name: gitdigital_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
+      POSTGRES_DB: ${POSTGRES_DB:-gitdigital}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis for High-Speed Usage Metering & Gas Logic
+  redis:
+    image: redis:7-alpine
+    container_name: gitdigital_cache
+    restart: always
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
