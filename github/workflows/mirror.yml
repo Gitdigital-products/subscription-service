@@ -1,0 +1,42 @@
+name: Mirror Subdirectories to Product Repos
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'packages/kyc-sdk/**'
+      - 'packages/gas-oracle/**'
+
+jobs:
+  mirror_kyc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push KYC SDK to its own repo
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.MIRROR_PAT }}
+        with:
+          source-directory: 'packages/kyc-sdk'
+          destination-github-username: 'Gitdigital-products'
+          destination-repository-name: 'solana-kyc-sdk'
+          user-email: 'automation@gitdigital.com'
+          target-branch: main
+
+  mirror_gas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Push Gas Oracle to RepoSync Repo
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.MIRROR_PAT }}
+        with:
+          source-directory: 'packages/gas-oracle'
+          destination-github-username: 'Gitdigital-products'
+          destination-repository-name: 'reposync-ai'
+          target-directory: 'src/modules/gas' # Places it inside the product repo's structure
+          target-branch: main
